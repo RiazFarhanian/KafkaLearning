@@ -1,4 +1,4 @@
-Kafka CLI Commands
+# Kafka CLI Commands
 Setup:
 For Windows:
 zookeeper-server-start <KAFKA_DIR>\zookeeper.properties
