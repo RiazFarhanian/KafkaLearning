@@ -1,11 +1,12 @@
-package org.example.riaz.producer;
+package org.example.riaz.kafka.lesson1.producer;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.clients.producer.RecordMetadata;
 
 import java.util.Properties;
 
-public class ASyncProducer {
+public class SyncProducer {
     public static void main(String[] args) {
         Properties properties = new Properties();
         properties.setProperty("bootstrap.servers", "localhost:9092");
@@ -14,8 +15,10 @@ public class ASyncProducer {
 
         try (KafkaProducer<String, Double> kafkaProducer = new KafkaProducer<>(properties)) {
             ProducerRecord<String, Double> record = new ProducerRecord<>("price", "Iphone 13", 12000d);
-            kafkaProducer.send(record, new CallbackImpl());
-            System.out.println("Kafka is not waiting for Send process to complete!");
+            RecordMetadata recordMetadata = kafkaProducer.send(record).get();
+            System.out.println("Sync Producer TimeStamp:" + recordMetadata.timestamp());
+            System.out.println("Sync Producer Partition:" + recordMetadata.partition());
+            System.out.println("Sync Producer Offset:" + recordMetadata.offset());
         } catch (Exception e) {
             e.printStackTrace();
         }

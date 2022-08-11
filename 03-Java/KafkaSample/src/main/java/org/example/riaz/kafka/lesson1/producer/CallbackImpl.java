@@ -1,4 +1,4 @@
-package org.example.riaz.producer;
+package org.example.riaz.kafka.lesson1.producer;
 
 import org.apache.kafka.clients.producer.RecordMetadata;
 

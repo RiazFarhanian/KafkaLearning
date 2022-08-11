@@ -1,4 +1,4 @@
-package org.example.riaz.consumer;
+package org.example.riaz.kafka.lesson1.consumer;
 
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
